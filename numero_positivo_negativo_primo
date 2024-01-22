@@ -1,0 +1,31 @@
+using System.Reflection.Metadata;
+
+Console.WriteLine("Digite un numero");
+int numero=Convert.ToInt32(Console.ReadLine());
+
+if (numero < 0)
+{
+ if (numero % 2==0)
+    {
+        Console.WriteLine($"El {numero} es negativo y primo.");
+    }
+ else
+    {
+        Console.WriteLine($"El {numero} no es negativo ni primo.");
+    }   
+}
+else if (numero > 0)
+{
+    if (numero % 2!=0)
+    {
+        Console.WriteLine($"El {numero} es positivo y no es primo");
+    }
+    else
+    {
+        Console.WriteLine($"El {numero} es primo y positivo");
+    }
+}
+else
+{
+    Console.WriteLine("El numero ingrasado es 0");
+}
