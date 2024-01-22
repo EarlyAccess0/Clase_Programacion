@@ -1,0 +1,42 @@
+using System;
+
+class Tarea
+{
+    static void Main()
+    {
+        decimal año;
+        Console.Write("Ingrese el año: ");
+        año = Convert.ToDecimal(Console.ReadLine());
+        if (año > 0 && año < 2024)
+        {
+            if (año_bisiesto(año))
+            {
+                Console.WriteLine($"El año {año} es bisiesto.");
+
+            }
+            else
+            {
+                Console.WriteLine($"El año {año} no es bisiesto.");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"El año {año} no es valido.");
+        }
+    }
+
+    static bool año_bisiesto(decimal año)
+    {
+        if (año % 4 == 0)
+        {
+            if (año % 100 == 0)
+            {
+                if (año % 400 == 0)
+                    return false;
+                return true;
+            }
+            return true;
+        }
+        return false;
+    }
+}
