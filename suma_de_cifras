@@ -1,0 +1,10 @@
+Console.WriteLine("Digite un numero");
+int numero=Convert.ToInt32(Console.ReadLine());
+string numero_separados= numero.ToString();
+int suma=0;
+foreach (char n in numero_separados)
+{
+    int digito= int.Parse(n.ToString());
+    suma+=digito;
+}
+Console.WriteLine("La suma de las cifras es: " + suma);
