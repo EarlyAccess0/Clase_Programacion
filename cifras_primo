@@ -1,0 +1,49 @@
+using System;
+using System.Diagnostics;
+
+class Tarea
+{
+    static void Main()
+    {
+        decimal num=0;
+        Console.WriteLine("Ingrese un número: ");
+        num = Convert.ToDecimal(Console.ReadLine());
+        string num_s= num.ToString();
+        separar_numeros(num_s);
+    }    
+
+    static void separar_numeros(string num_s)
+    {
+        char[] num_chars = num_s.ToCharArray();
+        foreach (char c in num_chars)
+    {
+        if (!char.IsDigit(c))
+       {
+            Console.WriteLine("El número {0} no es un dígito válido", c);
+            return;
+        }
+        int numero = Convert.ToInt32(c.ToString());
+        es_primo(numero);
+        Console.WriteLine("El dígito {0} es primo", numero);
+    }
+}
+    
+static void es_primo(int numero)
+{
+    if (numero <= 1)
+    {
+        Console.WriteLine("El número {0} no es primo", numero);
+        return;
+    }
+    for (int i = 2; i < numero; i++)
+   {
+        if (numero % i == 0)
+        {
+            Console.WriteLine("El número {0} no es primo", numero);
+            return;
+        }
+    }
+    Console.WriteLine("El número {0} es primo", numero);
+}
+
+}
