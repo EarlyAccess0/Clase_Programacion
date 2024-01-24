@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Ingresa un número entero de tres dígitos: ");
+        int numero = int.Parse(Console.ReadLine());
+
+        if (numero < 100 || numero > 999)
+        {
+            Console.WriteLine("Por favor, ingresa un número de tres dígitos.");
+            return;
+        }
+
+        int tercerDigito = numero % 10;
+        int segundoDigito = (numero / 10) % 10;
+        int primerDigito = numero / 100;
+
+        if (EsMultiploDeOtro(primerDigito, segundoDigito) || 
+            EsMultiploDeOtro(primerDigito, tercerDigito) || 
+            EsMultiploDeOtro(segundoDigito, tercerDigito))
+        {
+            Console.WriteLine("Al menos un dígito es múltiplo de otro.");
+        }
+        else
+        {
+            Console.WriteLine("Ningún dígito es múltiplo de otro.");
+        }
+    }
+
+    static bool EsMultiploDeOtro(int numero1, int numero2)
+    {
+        return numero1 % numero2 == 0 || numero2 % numero1 == 0;
+    }
+}
