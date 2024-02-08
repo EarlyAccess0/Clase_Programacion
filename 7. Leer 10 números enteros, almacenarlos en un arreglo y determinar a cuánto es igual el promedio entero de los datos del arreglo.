@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    static int PromedioEntero(int[] numeros)
+    {
+        int suma = 0;
+        foreach (int numero in numeros)
+        {
+            suma += numero;
+        }
+        return suma / numeros.Length;
+    }
+
+    static void Main(string[] args)
+    {
+        int[] numeros = new int[10];
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Ingrese el número {i + 1}: ");
+            numeros[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("Promedio entero de los datos del arreglo: " + PromedioEntero(numeros));
+    }
+}
