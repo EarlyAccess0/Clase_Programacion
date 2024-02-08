@@ -1,0 +1,63 @@
+using System;
+
+class Program
+{
+    static bool EsPrimo(int n)
+    {
+        if (n < 2) return false;
+        for (int i = 2; i * i <= n; i++)
+        {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    static int ContarDigitosPares(int numero)
+    {
+        int count = 0;
+        foreach (char digito in numero.ToString())
+        {
+            int d = int.Parse(digito.ToString());
+            if (d % 2 == 0)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    static int PosicionPrimoConMasDigitosPares(int[] numeros)
+    {
+        int maxDigitosPares = 0;
+        int posicion = -1;
+        for (int i = 0; i < numeros.Length; i++)
+        {
+            if (EsPrimo(numeros[i]))
+            {
+                string numeroStr = numeros[i].ToString();
+                if (!string.IsNullOrEmpty(numeroStr))
+                {
+                    int digitosPares = ContarDigitosPares(numeros[i]);
+                    if (digitosPares > maxDigitosPares)
+                    {
+                        maxDigitosPares = digitosPares;
+                        posicion = i;
+                    }
+                }
+            }
+        }
+        return posicion;
+    }
+
+    static void Main(string[] args)
+    {
+        int[] numeros = new int[10];
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Ingrese el número {i + 1}: ");
+            numeros[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("Posición del número primo con más dígitos pares: " + PosicionPrimoConMasDigitosPares(numeros));
+    }
+}
